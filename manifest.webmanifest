@@ -1,7 +1,7 @@
 {
   "name": "HobbyMatch",
   "short_name": "HobbyMatch",
-  "description": "Swipe right on your next hobby.",
+  "description": "Explore your next hobby.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
