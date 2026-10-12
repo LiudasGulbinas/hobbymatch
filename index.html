@@ -116,7 +116,7 @@ body.framed #statusbar{display:flex}
 .round.like{background:var(--rust);box-shadow:0 8px 18px rgba(196,82,26,.35)}
 
 .tabbar{flex:none;margin-top:auto;padding:8px 18px calc(var(--bottom) + 6px);border-top:1px solid var(--line);background:#fff;display:flex;justify-content:space-around}
-.tab{position:relative;width:64px;display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--ink2);font-size:11px;font-weight:700;padding-top:2px}
+.tab{position:relative;width:72px;white-space:nowrap;display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--ink2);font-size:11px;font-weight:700;padding-top:2px}
 .tab.on{color:var(--rust);font-weight:800}
 .badge{position:absolute;top:-4px;right:8px;min-width:20px;height:20px;padding:0 5px;border-radius:10px;background:var(--rust);color:#fff;font-size:12px;font-weight:800;line-height:20px;text-align:center;transform:scale(0);transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
 .badge.show{transform:scale(1)}
@@ -227,7 +227,7 @@ body.framed #statusbar{display:flex}
     </div>
     <nav class="tabbar">
      <button class="tab on" aria-label="Discover"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="11" height="15" rx="2.5" transform="rotate(-8 10.5 10.5)"/><rect x="8.5" y="5.5" width="11" height="15" rx="2.5" transform="rotate(8 14 13)"/></svg>Discover</button>
-     <button class="tab soon" aria-label="Matches"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10z"/></svg>Matches<span class="badge" id="badge">0</span></button>
+     <button class="tab soon" aria-label="My Hobbies"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10z"/></svg>My Hobbies<span class="badge" id="badge">0</span></button>
      <button class="tab soon" aria-label="Map"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6.5l6-2.5 6 2.5 6-2.5v13.5l-6 2.5-6-2.5-6 2.5z"/><path d="M9 4v13.5M15 6.5V20"/></svg>Map</button>
      <button class="tab soon" aria-label="Profile"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>Me</button>
     </nav>
