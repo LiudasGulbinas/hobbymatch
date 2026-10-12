@@ -1,5 +1,5 @@
 // HobbyMatch offline support: serve the app from cache, refresh it in the background.
-const CACHE = 'hobbymatch-v4';
+const CACHE = 'hobbymatch-v5';
 const FILES = [
   './',
   './index.html',

@@ -79,7 +79,8 @@ body.framed #statusbar{display:flex}
 .fine{margin-top:14px;font-size:14px;text-align:center;color:var(--ink2)}
 
 /* swipe */
-#swipe{padding-top:var(--top)}
+#swipe{padding-top:var(--top);padding-bottom:var(--tabh)}
+#screen{--tabh:calc(62px + var(--bottom))}
 .header{height:56px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;flex:none}
 .brand-row{display:flex;align-items:center;gap:10px}
 .mini-mark{position:relative;width:32px;height:36px}
@@ -115,11 +116,40 @@ body.framed #statusbar{display:flex}
 .round.l{width:72px;height:72px;box-shadow:0 6px 16px rgba(30,27,58,.14)}
 .round.like{background:var(--rust);box-shadow:0 8px 18px rgba(196,82,26,.35)}
 
-.tabbar{flex:none;margin-top:auto;padding:8px 18px calc(var(--bottom) + 6px);border-top:1px solid var(--line);background:#fff;display:flex;justify-content:space-around}
+.tabbar{position:absolute;left:0;right:0;bottom:0;z-index:20;height:var(--tabh);padding:8px 18px 0;transition:transform .35s ease;border-top:1px solid var(--line);background:#fff;display:flex;justify-content:space-around}
 .tab{position:relative;width:72px;white-space:nowrap;display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--ink2);font-size:11px;font-weight:700;padding-top:2px}
 .tab.on{color:var(--rust);font-weight:800}
 .badge{position:absolute;top:-4px;right:8px;min-width:20px;height:20px;padding:0 5px;border-radius:10px;background:var(--rust);color:#fff;font-size:12px;font-weight:800;line-height:20px;text-align:center;transform:scale(0);transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
 .badge.show{transform:scale(1)}
+.tabbar.off{transform:translateY(110%)}
+.screen.tabpane{transform:none}
+
+/* my hobbies */
+#mine{padding-top:var(--top);padding-bottom:var(--tabh)}
+.mine-head{padding:12px 22px 4px;flex:none}
+.mine-head h2{margin:0;font-size:34px;line-height:1.1}
+.mine-head p{margin-top:4px;font-size:15px;color:var(--ink2)}
+.list{flex:1 1 auto;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding:12px 16px 24px;display:flex;flex-direction:column;gap:12px}
+.item{display:flex;align-items:center;gap:14px;width:100%;padding:12px 14px 12px 12px;border-radius:22px;background:#fff;box-shadow:0 4px 14px rgba(30,27,58,.08);text-align:left;
+  animation:rise .4s ease both;transition:transform .12s}
+.item:active{transform:scale(.98)}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.thumb{width:66px;height:66px;border-radius:18px;flex:none;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.thumb svg{width:48px;height:auto;max-height:48px}
+.meta{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:3px}
+.meta .top{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.meta .iname{font-size:21px;line-height:1.15}
+.meta .when{font-size:12px;font-weight:700;color:var(--ink2);white-space:nowrap}
+.meta .inear{display:flex;align-items:center;gap:5px;font-size:13px;font-weight:700;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.meta .inear svg{flex:none}
+.meta .ichips{display:flex;gap:5px;overflow:hidden}
+.meta .ichips span{padding:3px 8px;border-radius:999px;background:var(--sand);font-size:11px;font-weight:700;white-space:nowrap}
+.chev{flex:none}
+.empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 40px 40px}
+.empty .art2{position:relative;width:120px;height:130px;margin-bottom:22px}
+.empty h3{margin:0;font-size:24px}
+.empty p{margin-top:8px;font-size:16px;line-height:1.45;color:var(--ink2)}
+.empty .primary{margin-top:24px;padding:0 30px;height:52px;font-size:18px}
 
 /* match overlay */
 #match{position:absolute;inset:0;z-index:40;padding:calc(var(--top) + 64px) 30px calc(var(--bottom) + 30px);background:rgba(30,27,58,.95);
@@ -224,13 +254,34 @@ body.framed #statusbar{display:flex}
      <button class="round l like" id="likeBtn" aria-label="Yes, like this hobby"><svg width="32" height="30" viewBox="-62 -76 124 108" aria-hidden="true"><path d="M0 30C-40 0-60-20-60-40c0-22 20-34 38-34 12 0 20 8 22 16 2-8 10-16 22-16 18 0 38 12 38 34 0 20-20 40-60 70z" fill="#fff"/></svg></button>
      <button class="round s soon" aria-label="More about this hobby"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3C6FD8" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></svg></button>
     </div>
-    <nav class="tabbar">
-     <button class="tab on" aria-label="Discover"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="11" height="15" rx="2.5" transform="rotate(-8 10.5 10.5)"/><rect x="8.5" y="5.5" width="11" height="15" rx="2.5" transform="rotate(8 14 13)"/></svg>Discover</button>
-     <button class="tab soon" aria-label="My Hobbies"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10z"/></svg>My Hobbies<span class="badge" id="badge">0</span></button>
+   </section>
+
+
+   <!-- MY HOBBIES -->
+   <section id="mine" class="screen tabpane hidden" aria-label="My Hobbies">
+    <div class="mine-head">
+     <h2 class="fredoka">My Hobbies</h2>
+     <p id="mineCount">Your matches</p>
+    </div>
+    <div class="list" id="mineList"></div>
+    <div class="empty" id="mineEmpty">
+     <div class="art2" aria-hidden="true">
+      <div style="position:absolute;left:4px;top:8px;width:84px;height:112px;border-radius:20px;background:#E6E0F2;transform:rotate(-12deg)"></div>
+      <div style="position:absolute;left:30px;top:6px;width:84px;height:112px;border-radius:20px;background:#FFE6D3;transform:rotate(8deg);display:flex;align-items:center;justify-content:center">
+       <svg width="40" height="36" viewBox="-62 -76 124 108"><path d="M0 30C-40 0-60-20-60-40c0-22 20-34 38-34 12 0 20 8 22 16 2-8 10-16 22-16 18 0 38 12 38 34 0 20-20 40-60 70z" fill="none" stroke="#C4521A" stroke-width="9" stroke-dasharray="14 10"/></svg>
+      </div>
+     </div>
+     <h3 class="fredoka">No matches yet</h3>
+     <p>Swipe right on a hobby you like and it will appear here.</p>
+     <button class="primary" id="emptyGo">Start exploring</button>
+    </div>
+   </section>
+    <nav class="tabbar off" id="tabbar" aria-label="Main">
+     <button class="tab on" data-tab="swipe" aria-label="Discover" aria-current="page"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="11" height="15" rx="2.5" transform="rotate(-8 10.5 10.5)"/><rect x="8.5" y="5.5" width="11" height="15" rx="2.5" transform="rotate(8 14 13)"/></svg>Discover</button>
+     <button class="tab" data-tab="mine" aria-label="My Hobbies"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10z"/></svg>My Hobbies<span class="badge" id="badge">0</span></button>
      <button class="tab soon" aria-label="Map"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6.5l6-2.5 6 2.5 6-2.5v13.5l-6 2.5-6-2.5-6 2.5z"/><path d="M9 4v13.5M15 6.5V20"/></svg>Map</button>
      <button class="tab soon" aria-label="Profile"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>Me</button>
     </nav>
-   </section>
 
    <!-- MATCH -->
    <section id="match" aria-label="It's a match" aria-hidden="true">
@@ -321,11 +372,73 @@ body.framed #statusbar{display:flex}
   /* ---------- welcome ---------- */
   $('startBtn').addEventListener('click', function () {
     $('welcome').classList.add('hidden');
-    $('swipe').classList.remove('hidden');
+    $('tabbar').classList.remove('off');
+    showTab('swipe');
   });
 
+  /* ---------- tabs ---------- */
+  function showTab(name) {
+    ['swipe', 'mine'].forEach(function (id) { $(id).classList.toggle('hidden', id !== name); });
+    Array.prototype.forEach.call(document.querySelectorAll('.tab[data-tab]'), function (t) {
+      var on = t.getAttribute('data-tab') === name;
+      t.classList.toggle('on', on);
+      if (on) t.setAttribute('aria-current', 'page'); else t.removeAttribute('aria-current');
+    });
+    if (name === 'mine') renderMine();
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('.tab[data-tab]'), function (t) {
+    t.addEventListener('click', function () { showTab(t.getAttribute('data-tab')); });
+  });
+  $('emptyGo').addEventListener('click', function () { showTab('swipe'); });
+
+  /* ---------- my hobbies (saved on this phone) ---------- */
+  var liked = [];
+  try { liked = JSON.parse(localStorage.getItem('hm-liked') || '[]') || []; } catch (e) { liked = []; }
+  liked = liked.filter(function (x) { return x && HOBBIES.some(function (h) { return h.id === x.id; }); });
+  function saveLiked() { try { localStorage.setItem('hm-liked', JSON.stringify(liked)); } catch (e) {} }
+  function updateBadge() { var b = $('badge'); b.textContent = liked.length; b.classList.toggle('show', liked.length > 0); }
+  function addLike(h) {
+    liked = liked.filter(function (x) { return x.id !== h.id; });
+    liked.unshift({ id: h.id, ts: Date.now() });
+    saveLiked(); updateBadge();
+  }
+  function removeLike(id) {
+    liked = liked.filter(function (x) { return x.id !== id; });
+    saveLiked(); updateBadge();
+  }
+  function whenText(ts) {
+    var d = new Date(ts), now = new Date();
+    var day = function (x) { return new Date(x.getFullYear(), x.getMonth(), x.getDate()).getTime(); };
+    var diff = Math.round((day(now) - day(d)) / 86400000);
+    if (diff <= 0) return 'Today';
+    if (diff === 1) return 'Yesterday';
+    return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+  }
+  var CHEV = '<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8A86A0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>';
+  function renderMine() {
+    var list = $('mineList'), n = liked.length;
+    $('mineCount').textContent = n === 0 ? 'Your matches will live here.' : n === 1 ? '1 hobby matched. Great start!' : n + ' hobbies matched. The sofa is getting worried.';
+    $('mineEmpty').style.display = n ? 'none' : 'flex';
+    list.style.display = n ? 'flex' : 'none';
+    list.innerHTML = liked.map(function (x, i) {
+      var h = HOBBIES.filter(function (k) { return k.id === x.id; })[0];
+      return '<button class="item" data-id="' + h.id + '" style="animation-delay:' + (i * 0.05) + 's" aria-label="' + h.name + ', matched ' + whenText(x.ts) + '">' +
+        '<span class="thumb" style="background:' + h.bg + '">' + ART[h.id] + '</span>' +
+        '<span class="meta">' +
+          '<span class="top"><span class="iname fredoka">' + h.name + '</span><span class="when">' + whenText(x.ts) + '</span></span>' +
+          '<span class="inear">' + PIN.replace('width="16" height="16"', 'width="13" height="13"') + h.near + '</span>' +
+          '<span class="ichips">' + h.chips.map(function (c) { return '<span>' + c + '</span>'; }).join('') + '</span>' +
+        '</span>' + CHEV + '</button>';
+    }).join('');
+  }
+  $('mineList').addEventListener('click', function (e) {
+    var it = e.target.closest('.item');
+    if (it) toast('Hobby details: coming in the next version');
+  });
+  updateBadge();
+
   /* ---------- cards ---------- */
-  var stack = $('stack'), idx = 0, likes = 0, topEl = null, nextEl = null, busy = false, history = [];
+  var stack = $('stack'), idx = 0, topEl = null, nextEl = null, busy = false, history = [];
 
   function makeCard(h) {
     var el = document.createElement('article');
@@ -368,7 +481,7 @@ body.framed #statusbar{display:flex}
     leaving.style.transform = 'translateX(' + (dir > 0 ? 560 : -560) + 'px) rotate(' + (dir > 0 ? 26 : -26) + 'deg)';
     setStamps(leaving, dir * 200);
     nextEl.style.transform = 'translateY(0) scale(1)';
-    history.push(dir);
+    history.push({ dir: dir, id: h.id, had: liked.some(function (x) { return x.id === h.id; }) });
     setTimeout(function () {
       leaving.remove();
       idx += 1;
@@ -377,8 +490,7 @@ body.framed #statusbar{display:flex}
       stack.insertBefore(nextEl, topEl);
       busy = false;
       if (dir > 0) {
-        likes += 1;
-        var b = $('badge'); b.textContent = likes; b.classList.add('show');
+        addLike(h);
         showMatch(h);
       }
     }, 330);
@@ -387,8 +499,8 @@ body.framed #statusbar{display:flex}
   function undo() {
     if (busy || !history.length) { if (!history.length) toast('Nothing to undo'); return; }
     busy = true;
-    var dir = history.pop();
-    if (dir > 0) { likes = Math.max(0, likes - 1); var b = $('badge'); b.textContent = likes; b.classList.toggle('show', likes > 0); }
+    var last = history.pop(), dir = last.dir;
+    if (dir > 0 && !last.had) removeLike(last.id);
     idx -= 1;
     nextEl.remove();
     nextEl = topEl; nextEl.classList.add('next'); nextEl.style.transform = '';
